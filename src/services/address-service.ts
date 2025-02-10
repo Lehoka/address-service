@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import logger from './logger'
 
 export class AddressService {
 
@@ -10,9 +11,13 @@ export class AddressService {
         const street = streets[Math.floor(Math.random() * streets.length)]
         const city = cities[Math.floor(Math.random() * cities.length)]
 
+        const randomAddress = `${streetNumber} ${street} St, ${city}`
+
+        logger.info(`Generated random address: ${randomAddress}`)
+
         return {
             id: uuidv4(),
-            address: `${streetNumber} ${street} St, ${city}`
+            address: randomAddress
         }
     }
 
